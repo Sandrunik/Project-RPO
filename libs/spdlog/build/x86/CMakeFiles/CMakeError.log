@@ -1,0 +1,67 @@
+Performing C++ SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /Users/sandra/AndroidStudioProjects/rpo23/Project-RPO/spdlog/build/x86/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_48239/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_48239.dir/build.make CMakeFiles/cmTC_48239.dir/build
+Building CXX object CMakeFiles/cmTC_48239.dir/src.cxx.o
+/Users/sandra/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=i686-none-linux-android19 --sysroot=/Users/sandra/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -DCMAKE_HAVE_LIBC_PTHREAD  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -DSPDLOG_COMPILED_LIB  -fPIE -std=c++11 -MD -MT CMakeFiles/cmTC_48239.dir/src.cxx.o -MF CMakeFiles/cmTC_48239.dir/src.cxx.o.d -o CMakeFiles/cmTC_48239.dir/src.cxx.o -c /Users/sandra/AndroidStudioProjects/rpo23/Project-RPO/spdlog/build/x86/CMakeFiles/CMakeTmp/src.cxx
+/Users/sandra/AndroidStudioProjects/rpo23/Project-RPO/spdlog/build/x86/CMakeFiles/CMakeTmp/src.cxx:13:3: error: use of undeclared identifier 'pthread_cancel'
+  pthread_cancel(thread);
+  ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_48239.dir/src.cxx.o] Error 1
+make: *** [cmTC_48239/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /Users/sandra/AndroidStudioProjects/rpo23/Project-RPO/spdlog/build/x86/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_5299b/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_5299b.dir/build.make CMakeFiles/cmTC_5299b.dir/build
+Building CXX object CMakeFiles/cmTC_5299b.dir/CheckFunctionExists.cxx.o
+/Users/sandra/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=i686-none-linux-android19 --sysroot=/Users/sandra/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -DSPDLOG_COMPILED_LIB -DCHECK_FUNCTION_EXISTS=pthread_create -fPIE -std=c++11 -MD -MT CMakeFiles/cmTC_5299b.dir/CheckFunctionExists.cxx.o -MF CMakeFiles/cmTC_5299b.dir/CheckFunctionExists.cxx.o.d -o CMakeFiles/cmTC_5299b.dir/CheckFunctionExists.cxx.o -c /Users/sandra/AndroidStudioProjects/rpo23/Project-RPO/spdlog/build/x86/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
+Linking CXX executable cmTC_5299b
+/Users/sandra/Library/Android/sdk/cmake/3.22.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5299b.dir/link.txt --verbose=1
+/Users/sandra/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=i686-none-linux-android19 --sysroot=/Users/sandra/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -DSPDLOG_COMPILED_LIB -DCHECK_FUNCTION_EXISTS=pthread_create -static-libstdc++ -Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,--fatal-warnings -Wl,--no-undefined -Qunused-arguments    CMakeFiles/cmTC_5299b.dir/CheckFunctionExists.cxx.o -o cmTC_5299b  -lpthreads -latomic -lm 
+ld: error: unable to find library -lpthreads
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+make[1]: *** [cmTC_5299b] Error 1
+make: *** [cmTC_5299b/fast] Error 2
+
+
+
+Determining if the function pthread_create exists in the pthread failed with the following output:
+Change Dir: /Users/sandra/AndroidStudioProjects/rpo23/Project-RPO/spdlog/build/x86/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_90c07/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_90c07.dir/build.make CMakeFiles/cmTC_90c07.dir/build
+Building CXX object CMakeFiles/cmTC_90c07.dir/CheckFunctionExists.cxx.o
+/Users/sandra/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=i686-none-linux-android19 --sysroot=/Users/sandra/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -DSPDLOG_COMPILED_LIB -DCHECK_FUNCTION_EXISTS=pthread_create -fPIE -std=c++11 -MD -MT CMakeFiles/cmTC_90c07.dir/CheckFunctionExists.cxx.o -MF CMakeFiles/cmTC_90c07.dir/CheckFunctionExists.cxx.o.d -o CMakeFiles/cmTC_90c07.dir/CheckFunctionExists.cxx.o -c /Users/sandra/AndroidStudioProjects/rpo23/Project-RPO/spdlog/build/x86/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
+Linking CXX executable cmTC_90c07
+/Users/sandra/Library/Android/sdk/cmake/3.22.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_90c07.dir/link.txt --verbose=1
+/Users/sandra/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=i686-none-linux-android19 --sysroot=/Users/sandra/Library/Android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -DSPDLOG_COMPILED_LIB -DCHECK_FUNCTION_EXISTS=pthread_create -static-libstdc++ -Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,--fatal-warnings -Wl,--no-undefined -Qunused-arguments    CMakeFiles/cmTC_90c07.dir/CheckFunctionExists.cxx.o -o cmTC_90c07  -lpthread -latomic -lm 
+ld: error: unable to find library -lpthread
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+make[1]: *** [cmTC_90c07] Error 1
+make: *** [cmTC_90c07/fast] Error 2
+
+
+

@@ -40,8 +40,26 @@ find_library( # Sets the name of the path variable.
 # can link multiple libraries, such as libraries you define in this
 # build script, prebuilt third-party libraries, or system libraries.
 
+
+add_library(spdlog STATIC IMPORTED)
+set_target_properties(spdlog PROPERTIES IMPORTED_LOCATION
+        /Users/sandra/AndroidStudioProjects/rpo23/Project-RPO/libs/spdlog/build/${ANDROID_ABI}/libspdlog.a
+        )
+target_include_directories(fclient PUBLIC
+        /Users/sandra/AndroidStudioProjects/rpo23/Project-RPO/libs/spdlog/spdlog/include
+        /Users/sandra/AndroidStudioProjects/rpo23/Project-RPO/libs/mbedtls/mbedtls/include
+        )
+
+
+add_library(mbedcrypto SHARED IMPORTED)
+set_target_properties(mbedcrypto PROPERTIES IMPORTED_LOCATION
+        ${CMAKE_CURRENT_SOURCE_DIR}/../nativeLibs/${ANDROID_ABI}/libmbedcrypto.so)
+
+
 target_link_libraries( # Specifies the target library.
         fclient
+        spdlog
+        mbedcrypto
 
         # Links the target library to the log library
         # included in the NDK.
